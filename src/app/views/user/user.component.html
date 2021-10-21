@@ -1,0 +1,36 @@
+<div class="row d-flex justify-content-center">
+  <div class="row col-md-8">
+    <form class="row g-3" [formGroup]="userForm" (ngSubmit)="AddUser()">
+      <div class="row g-3">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="name" name="name" formControlName="name">
+        </div>
+        <div class="col">
+          <input type="number" class="form-control" placeholder="age" name="age" formControlName="age">
+        </div>
+        <div class="col">
+          <select class="form-select" name="gender" formControlName="gender">
+            <option disabled selected [value]="null">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="None">None</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-end p-0 mt-3">
+        <div class="col-md-2 text-end p-0">
+          <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>
+        </div>
+        <div class="col-md-2 text-end p-0">
+          <button [disabled]="!userForm.valid" type="submit"  
+          class="btn btn-primary">Add User</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <app-user-list class="row col-md-8 mt-3" [user]="newUser" [list]="initialuserList" (userEvent)="editUser($event)"></app-user-list>
+</div>
+
+

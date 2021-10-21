@@ -1,0 +1,73 @@
+<div class="d-flex justify-content-center">
+  <div class="row col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              Enter the numbers separated by comma ',' <br />
+              E.g: 11,21,10,42,53
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="inputText" class="form-label">Input</label>
+                  <textarea class="form-control" [formControl]="inputText" id="inputText" rows="2"
+                  (keyup)="checnum($event);trimExtraComma();"></textarea>
+                </div>
+                <div *ngIf="inputText.invalid && (inputText.dirty || inputText.touched)" class="invalid-feedback">
+                  <div *ngIf="inputText.errors?.required">
+                    input text is required.
+                  </div>
+                  <div *ngIf="inputText.errors?.minlength">
+                    input text must be at least 4 characters long.
+                  </div>
+                  <div *ngIf="inputText.errors?.inValidString">
+                    input text should contains commas.
+                  </div>
+                </div>
+          </div>
+          <div class="row d-flex justify-content-end p-0">
+            <div class="col-md-2 text-end p-0">
+              <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>
+            </div>
+            <div class="col-md-2 text-end p-0">
+              <button [disabled]="!inputText.valid" type="button" (click)="calculate()" 
+              class="btn btn-primary">Calculate</button>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="card p-0">
+              <div class="card-header">
+                Result
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between">
+                  <div><strong>Total Numbers</strong></div>
+                  <div>{{result.total}}</div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <div><strong>Mean (Average) : </strong></div>
+                  <div>{{result.mean}}</div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <div><strong>SD :</strong></div>
+                  <div>{{result.sd}}</div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <div><strong>Variance :</strong></div>
+                  <div>{{result.variance}}</div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <div><strong>Population SD :</strong></div>
+                  <div>{{result.populationSd}}</div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <div><strong>Variance(Population SD) :</strong></div>
+                  <div>{{result.variancePopulationSd}}</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

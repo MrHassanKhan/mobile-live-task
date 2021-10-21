@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="card p-0">
+    <div class="card-header">
+      Result
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userList; let i=index;">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.gender}}</td>
+            <td>
+
+              <button type="button" class="btn btn-sm btn-danger" (click)="delete(i)">
+                <i class="bi bi-trash"></i>
+              </button>
+              <button type="button" class="ms-2 btn btn-sm btn-info" (click)="editUser(i)">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
