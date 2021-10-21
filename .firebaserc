@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mobile-live-task": {
+      "hosting": {
+        "mobile-live-task": [
+          "mobile-live-task"
+        ]
+      }
+    }
+  }
+}
